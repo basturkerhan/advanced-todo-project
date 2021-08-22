@@ -1,4 +1,4 @@
-# Advanced Todo Projesi (Gelişmiş Yapılacaklar Projesi)
+# Advanced Todo Project
 
 ## Hakkında
 C#, ASP.NET Core, Entity Framework Core kullanımı ile veritabanı yönetimi, LINQ ve MVC mimarisini öğrenmek amacıyla yaptığım bu proje, Trello sitesiyle benzer işlevlere sahiptir.
