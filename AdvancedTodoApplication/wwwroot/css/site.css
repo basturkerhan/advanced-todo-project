@@ -1,0 +1,401 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    color: white;
+}
+
+a {
+    color: #0366d6;
+}
+
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* General CSS
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.application-body {
+    background-color: white;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+
+/* FOOTER CSS
+-------------------------------------------------- */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    background-color: #F1F1F1;
+    color: #333;
+    line-height: 60px;
+}
+
+
+/* LANDING PAGE CSS
+-------------------------------------------------- */
+.landing-header {
+    background-color: #1d5e7c;
+}
+
+.home-section {
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.home-first-section {
+    background-color: #1d5e7c;
+    color: white;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    margin: 0 !important;
+}
+
+.home-second-section {
+    background-color: #227093;
+    color: white;
+    margin: 0 !important;
+}
+.home-third-section {
+    background-color: #277da5;
+    color: white;
+}
+
+.slider-image {
+    height: 500px !important;
+    max-height: 500px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.site-head-name {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 2rem;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+
+/* AUTH PAGES CSS
+-------------------------------------------------- */
+.auth-header {
+    background-color: #fff;
+}
+
+.auth-area {
+    display: flex;
+    align-items: center;
+}
+
+.auth-form-area {
+    display: flex;
+    align-items: center;
+}
+
+
+/* CRUD PAGES CSS
+-------------------------------------------------- */
+.crud-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+
+/* APPLICATION HEADER CSS
+-------------------------------------------------- */
+.application-header {
+    background-color: #2a5536;
+    color: #fff !important;
+}
+
+.application-header .container a.navbar-brand {
+    color: #fff !important;
+}
+
+.application-head-name {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 2rem;
+}
+
+a.lead, a.lead:hover {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.user-dropdown, .user-dropdown a {
+    color: #FFF;
+}
+
+.edit, .edit:hover, .edit i {
+    color: #f1f1f1;
+    font-size: 2.5rem;
+}
+
+.dropdown-item {
+    color: #000 !important;
+}
+
+
+/* SHOW USER'S BOARDS PAGE CSS
+-------------------------------------------------- */
+.board-list-jumbotron, .board-details-jumbotron {
+    background-color: #2a5536;
+    color: #fff;
+}
+
+.board-list-jumbotron {
+    border-radius: 0 !important;
+}
+
+.board-container {
+    padding: 1rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    color: #000;
+    cursor: pointer;
+}
+
+.board-item {
+    background: url("../images/todobg.png") no-repeat;
+    height: 150px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 1rem;
+    color: #ddd;
+    object-fit: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.board-create-item {
+    background-color: #2a5536;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #ddd;
+}
+
+.add-board {
+    font-size: 3rem;
+    text-decoration: none !important;
+}
+
+.add-board:hover {
+    text-decoration: none !important;
+}
+
+
+/* BOARD DETAILS PAGE CSS
+-------------------------------------------------- */
+.board-details-jumbotron {
+    border-radius: 0 0 4rem 0;
+}
+
+#addUserToBoard {
+    margin-top: 1rem;
+}
+
+.add-user-to-board-btn, .add-user-to-card-btn {
+    color: #2a5536;
+}
+.in-board-alert {
+    border: 0 !important;
+    border-radius: 1rem !important;
+    margin-top: 1rem;
+    font-size: .9rem;
+    text-align: center;
+}
+
+
+/* Avatar CSS 
+---------------------------- */
+.user-small-avatar, .user-smallest-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #ddd !important;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    border: 0;
+}
+
+.user-small-avatar {
+    height: 40px;
+    width: 40px;
+    max-width: 40px;
+    font-size: 1rem;
+    margin: .25rem;
+}
+
+.user-smallest-avatar {
+    height: 35px;
+    width: 35px;
+    max-width: 35px;
+    font-size: .9rem;
+    margin: .2rem;
+}
+
+
+/* Category CSS
+---------------------------- */
+.category-header {
+    background-color: #EEE;
+    border-radius: 3rem !important;
+    border: 0 !important;
+    font-size: 1.15rem;
+    border-left: .25rem solid #ccc !important;
+}
+
+.category-header-card {
+    border: 0 !important;
+}
+
+.category-icon-area {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    font-size: 1.3rem;
+    color: #387248;
+}
+
+.category-add-btn {
+    width: 60px;
+    font-size: 2rem;
+    height: 60px;
+    border-radius: 50%;
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 100;
+    color: white;
+    background-color: #387248;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .category-add-btn:hover {
+        background-color: #2a5536;
+        color: #FFF !important;
+        transition: background-color 0.3s linear;
+        text-decoration: none;
+    }
+
+
+/* Todo Item CSS
+---------------------------- */
+.checked-todo {
+    background: repeating-linear-gradient( 45deg, #fff, #fff 2rem, #eee 2rem, #eee 4rem ) !important;
+}
+
+.todo-card {
+    margin-left: 3rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: 1px 0 0 1px !important;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px !important;
+}
+
+.todo-card .card-header {
+    border: 0 !important;
+    font-size: 1.1rem;
+}
+
+.checkbox {
+    width: 1rem;
+    height: 1rem;
+    margin-right: .5rem;
+}
+
+.todo-icon-area {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    font-size: .9rem;
+    color: #387248;
+}
+
+/* Card Modal ---------------------------- */
+.modal-title {
+    color: #333 !important;
+}
+
+.card-detail-user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+/* ---------------------------- */
+
+.footer-times-area {
+    display: flex !important;
+}
+
+.card-footer {
+    background-color: #FFF;
+    border: 0 !important;
+    border-radius: 0 0 1rem 1rem !important;
+    border-top: .05rem solid rgba(0,0,0,.2) !important;
+}
+
+.add-user-to-todo-item, .card-info, .remove-user-from-todo, .board-users, .btn, .board-name {
+    cursor: pointer !important;
+}
+
+
+/* OTHER CSS
+-------------------------------------------------- */
+.hidden {
+    display: none;
+}
+
+    .form-control, #addUserToBoard .btn-info {
+        border: 0 !important;
+        border-radius: 0 !important;
+    }
+
+
+
+

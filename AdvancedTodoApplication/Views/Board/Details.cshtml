@@ -1,0 +1,273 @@
+﻿@model AdvancedTodoApplication.Models.Board
+
+@{
+    ViewData["Title"] = @Html.DisplayFor(model => model.Name);
+    Layout = "_Layout";
+}
+
+<a class="category-add-btn" asp-controller="Category" asp-action="Create" asp-route-eklenecekpano="@Model.Id"><i class="fas fa-plus"></i></a>
+
+<div class="jumbotron board-details-jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="display-5 board-name">@Html.DisplayFor(model => model.Name) Panosu <a class="edit" asp-action="Edit" asp-route-id="@Model.Id"><i class="far fa-edit"></i></a></h1>
+                <hr />
+                <p>@Html.DisplayFor(model => model.Description)</p>
+            </div>
+
+            <div class="col-md-4">
+
+                @*BOARD USERS MODAL START*@
+                <p data-toggle="modal" data-target="#boardUsersModal" class="lead board-users"><i class="fas fa-users"></i> Pano Üyeleri</p>
+
+                <!-- Modal -->
+                <div class="modal fade" id="boardUsersModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Pano Üyelerini Yönet</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Ad</th>
+                                            <th>Soyad</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (UserBoard userBoard in Model.UserBoards)
+                                        {
+                                            <tr>
+                                                <td>@userBoard.ApplicationUser.FirstName</td>
+                                                <td>@userBoard.ApplicationUser.LastName</td>
+                                                @if (string.Compare(userBoard.UserId, Model.OwnerId) != 0)
+                                                {
+                                                    <td><center><a class="btn btn-danger text-white removeUserFromBoardBtn" id="@userBoard.UserId">Kaldır</a></center></td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*MODAL USERS MODAL FINISH*@
+
+                <hr />
+                <div class="row">
+                    @*pano üyeleri listelenmesi*@
+
+                    @foreach (UserBoard userBoard in Model.UserBoards)
+                    {
+                        <div title="@userBoard.ApplicationUser.FirstName @userBoard.ApplicationUser.LastName" class="col-2 user-small-avatar">@userBoard.ApplicationUser.FirstName[0]@userBoard.ApplicationUser.LastName[0]</div>
+                    }
+
+                    @{
+                        if (string.Compare(@ViewBag.userId, Model.OwnerId) == 0)
+                        {
+                            <div class="col-2 user-small-avatar add-user-to-board-btn"><i class="fas fa-plus"></i></div>
+                        }
+                    }
+                </div>
+
+                @{
+                    if (string.Compare(@ViewBag.userId, Model.OwnerId) == 0)
+                    {
+                        <form show="0" id="addUserToBoard" class="hidden">
+                            <input type="text" id="KullaniciID" class="form-control" placeholder="Kullanıcı ID">
+                            <input type="hidden" id="PanoID" value="@Model.Id" />
+                            <a id="AddUserToBoardBtn" class="btn btn-info btn-block">Üye Ekle</a>
+                        </form>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success in-board-alert">
+            @TempData["success"]
+        </div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger in-board-alert">
+            @TempData["error"]
+        </div>
+    }
+
+    @foreach (Category category in Model.BoardCategories)
+    {
+        <div class="card category-header-card">
+            <div class="card-header category-header">
+                <div class="row">
+                    <div class="col-9">
+                        @category.CategoryName
+                    </div>
+                    <div class="col-3 category-icon-area">
+                        <a asp-action="Create"
+                           asp-controller="ToDo"
+                           asp-route-categoryid="@category.Id"
+                           asp-route-boardid="@Model.Id">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        <a asp-action="Edit" asp-controller="Category" asp-route-boardid="@Model.Id" asp-route-id="@category.Id"><i class="far fa-edit"></i></a>
+                        <a asp-action="Delete" asp-controller="Category" asp-route-boardid="@Model.Id" asp-route-id="@category.Id"><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @foreach (ToDo todo in category.Todos)
+        {
+
+            string ischecked = @todo.IsChecked ? "checked-todo" : "";
+
+            <div class="card todo-card @ischecked">
+                @*TODO HEADER BASLANGICI*@
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-10">
+                            @{
+                                if (@todo.IsChecked)
+                                {
+                                    <input ischecked="1" todoid="@todo.Id" class="checkbox todo-checkbox" type="checkbox" checked />
+                                }
+                                else
+                                {
+                                    <input ischecked="0" todoid="@todo.Id" class="checkbox todo-checkbox" type="checkbox" />
+                                }
+                            }
+                            @todo.Title
+                        </div>
+                        <div class="col-2 todo-icon-area">
+
+                            @*CARD DETAIL BUTTON START*@
+                            @{
+                                string todoModalId = "CardId" + @todo.Id;
+                            }
+                            <a data-toggle="modal" data-target="#@todoModalId"><i class="fas fa-info card-info"></i></a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="@todoModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">@todo.Title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-md-6 card-desc-area">
+                                                        <h5>Açıklama</h5>
+                                                        <p>@todo.Description</p>
+                                                    </div>
+                                                    <div class="col-md-6">
+
+                                                        @foreach (UserToDo userToDo in todo.ToDoUsers)
+                                                        {
+                                                            <div class="card-detail-user-item">
+                                                                <p class="">@userToDo.ApplicationUser.FirstName @userToDo.ApplicationUser.LastName</p>
+                                                                @if (string.Compare(userToDo.UserId, todo.OwnerId) != 0)
+                                                                {
+                                                                    <a todoid="@userToDo.ToDoId" userid="@userToDo.UserId" class="remove-user-from-todo"><i class="fas fa-user-minus"></i></a>
+                                                                }
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a class="btn btn-danger" asp-action="Delete" asp-controller="ToDo" asp-route-id="@todo.Id" asp-route-boardid="@Model.Id">Sil</a>
+                                            <a asp-action="Edit" asp-controller="ToDo" asp-route-todoid="@todo.Id" asp-route-boardid="@Model.Id" class="btn btn-info">Düzenle</a>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*CARD DETAIL BUTTON END*@
+
+                            <a asp-action="Delete" asp-controller="ToDo" asp-route-id="@todo.Id" asp-route-boardid="@Model.Id"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                @*TODO HEADER BITISI*@
+
+                <div class="card-body">
+                    <small>@todo.Description</small>
+                </div>
+                <div class="card-footer">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                @* CARD FOOTER CARD USERS LISTING HERE START *@
+                                @foreach (UserToDo userToDo in todo.ToDoUsers)
+                                {
+                                    <div title="@userToDo.ApplicationUser.FirstName @userToDo.ApplicationUser.LastName" class="col-2 user-smallest-avatar">@userToDo.ApplicationUser.FirstName[0]@userToDo.ApplicationUser.LastName[0]</div>
+                                }
+                                @* CARD FOOTER CARD USERS LISTING HERE FINISH *@
+
+                                @*ADD USER TO CARD BUTTON START*@
+                                <div class="btn-group dropup">
+                                    <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="col-2 user-smallest-avatar add-user-to-card-btn"><i class="fas fa-plus"></i></div>
+
+                                    <div class="dropdown-menu">
+                                        @foreach (UserBoard userBoard in Model.UserBoards)
+                                        {
+                                            <a boardid="@Model.Id" todoid="@todo.Id" userid="@userBoard.UserId" class="dropdown-item add-user-to-todo-item">@userBoard.ApplicationUser.FirstName @userBoard.ApplicationUser.LastName</a>
+                                        }
+                                    </div>
+                                </div>
+                                @*ADD USER TO CARD FINISH*@
+
+                            </div>
+                        </div>
+
+                        @{
+                            string deadLine = @todo.Deadline != null ? @todo.Deadline?.ToString("dd/MM/yyyy HH:mm:ss") : "Belirtilmedi";
+                            string finishedAt = @todo.FinishedAt != null ? @todo.FinishedAt?.ToString("dd/MM/yyyy HH:mm:ss") : "Henüz Yapılmadı";
+                        }
+                        <div class="col-md-6 footer-times-area">
+                            <div class="col-md-4">Eklendi <br /><small>@todo.CreatedAt</small></div>
+                            <div class="col-md-4">Deadline <br /><small>@deadLine</small></div>
+                            <div class="col-md-4">Teslim <br /><small>@finishedAt</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <hr />
+    }
+</div>
+
+@section Scripts {
+    <script src="~/js/todoActions.js"></script>
+    <script src="~/js/boardActions.js"></script>
+}
+
+

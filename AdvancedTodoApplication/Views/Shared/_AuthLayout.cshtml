@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Advanced Todo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href='font-awesome\css\font-awesome.css' rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <nav class="auth-header navbar navbar-expand-sm navbar-toggleable-sm">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" asp-area="" asp-controller="Account" asp-action="Login">Hakkında</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" asp-area="" asp-controller="Account" asp-action="Signup">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr />
+
+    <main role="main" class="container auth-area">
+        @RenderBody()
+    </main>
+
+    <partial name="_Footer" />
+</body>
+</html>

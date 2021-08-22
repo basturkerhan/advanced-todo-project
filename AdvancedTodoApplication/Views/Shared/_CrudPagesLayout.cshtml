@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Advanced Todo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/scroolbar.css" />
+    <link href='font-awesome\css\font-awesome.css' rel="stylesheet" type="text/css">
+</head>
+<body class="application-body">
+
+    <partial name="_ApplicationHeader" />
+
+    <main role="main">
+        <div class="jumbotron board-list-jumbotron">
+            <div class="container">
+                <h1 class="display-4">@ViewData["Title"]</h1>
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <partial name="_Footer" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

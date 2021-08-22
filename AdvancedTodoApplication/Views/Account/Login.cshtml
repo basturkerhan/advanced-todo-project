@@ -1,0 +1,38 @@
+﻿@model AdvancedTodoApplication.Models.SignInModel
+
+@{
+    ViewData["Title"] = "Giriş";
+    Layout = "_AuthLayout";
+}
+<div class="row">
+    <div class="col-md-4 auth-form-area">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Giriş Yap" class="btn btn-primary" />
+            </div>
+            <div>
+                <a asp-action="Signup">Şimdi kayıt ol</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <img class="img-fluid" src="~/images/login.png" />
+    </div>
+</div>
+

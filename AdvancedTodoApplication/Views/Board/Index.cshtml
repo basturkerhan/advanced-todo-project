@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AdvancedTodoApplication.Models.Board>
+
+@{
+    ViewData["Title"] = "Panolarım";
+    Layout = "_Layout";
+}
+
+<div class="jumbotron board-list-jumbotron">
+    <div class="container">
+        <h1 class="display-5"><i class="fas fa-th-list"></i> Panolarım</h1>
+        <p>Bu alanda oluşturduğun veya katıldığın panoları görebilir, görevi bitmiş panoları kaldırabilir ya da yeni bir pano oluşturabilirsin.</p>
+    </div>
+</div>
+
+<div class="container">
+
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success in-board-alert my-2">
+            @TempData["success"]
+        </div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger in-board-alert my-2">
+            @TempData["error"]
+        </div>
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 board-container">
+
+                <div class="board-item">
+                    <div class="close-btn"><a asp-action="Delete" asp-route-id="@item.Id">&#10006;</a></div>
+                    <a asp-route="boardDetailsRoute" asp-route-id="@item.Id" class="lead">@Html.DisplayFor(modelItem => item.Name)</a>
+                </div>
+            </div>
+        }
+
+        <div class="col-md-4 board-container">
+            <a asp-action="Create">
+                <div class="board-create-item">
+                    <i class="fas fa-plus add-board"></i>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,37 @@
+﻿@model ApplicationUser
+
+@{
+    ViewData["Title"] = "Kullanıcı Bilgileri";
+    Layout = "_Layout";
+}
+
+
+
+<div class="jumbotron board-list-jumbotron">
+    <div class="container">
+        <h1 class="display-5"><i class="fas fa-user"></i> Bilgilerim</h1>
+        <hr />
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-6 lead">İsim</div>
+                    <div class="col-6 lead">@Model.FirstName</div>
+                </div>
+                <div class="row">
+                    <div class="col-6 lead">Soyisim</div>
+                    <div class="col-6 lead">@Model.LastName</div>
+                </div>
+                <div class="row">
+                    <div class="col-6 lead">Email</div>
+                    <div class="col-6 lead">@Model.Email</div>
+                </div>
+                <div class="row">
+                    <div class="col-6 lead">ID</div>
+                    <div class="col-6 lead">@Model.Id</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@model AdvancedTodoApplication.Models.Category
+
+@{
+    ViewData["Title"] = "Kategori Ekle";
+    Layout = "_CrudPagesLayout";
+}
+
+<div class="row">
+    <div class="crud-area">
+        <form asp-action="Create" asp-route-eklenecekpano="@ViewBag.eklenecekpano">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input type="text" asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Panoya Kategori Ekle" class="btn btn-block btn-outline-info" />
+            </div>
+        </form>
+    </div>
+</div>
