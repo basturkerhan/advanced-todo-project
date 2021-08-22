@@ -8761,11 +8761,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\erhaa\\source\\repos\\AdvancedTodoApplication\\AdvancedTodoApplication\\AdvancedTodoApplication.csproj",
+      "projectUniqueName": "C:\\Users\\erhaa\\Documents\\GitHub\\advanced-todo-project\\AdvancedTodoApplication\\AdvancedTodoApplication.csproj",
       "projectName": "AdvancedTodoApplication",
-      "projectPath": "C:\\Users\\erhaa\\source\\repos\\AdvancedTodoApplication\\AdvancedTodoApplication\\AdvancedTodoApplication.csproj",
+      "projectPath": "C:\\Users\\erhaa\\Documents\\GitHub\\advanced-todo-project\\AdvancedTodoApplication\\AdvancedTodoApplication.csproj",
       "packagesPath": "C:\\Users\\erhaa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\erhaa\\source\\repos\\AdvancedTodoApplication\\AdvancedTodoApplication\\obj\\",
+      "outputPath": "C:\\Users\\erhaa\\Documents\\GitHub\\advanced-todo-project\\AdvancedTodoApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\erhaa\\AppData\\Roaming\\NuGet\\NuGet.Config",

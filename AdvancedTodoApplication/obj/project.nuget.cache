@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oPED8C8vXYsHpOHM4mMtpA7D3ekUF2R6juu8Vd0w090jMJ8wVff7bzpoNZCBa9thTaV3sg3Pc3H4K63JhTz3EA==",
+  "dgSpecHash": "Zc4NbY52wpJvd9lOrYEd4Lid5A5eE+bpB7jEFe5pT1Iuqhe1QZ4E5eCmnjZWwNOipuSJtUOLCdbAT6tahqEeig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\erhaa\\source\\repos\\AdvancedTodoApplication\\AdvancedTodoApplication\\AdvancedTodoApplication.csproj",
+  "projectFilePath": "C:\\Users\\erhaa\\Documents\\GitHub\\advanced-todo-project\\AdvancedTodoApplication\\AdvancedTodoApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\erhaa\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\erhaa\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.8\\microsoft.aspnetcore.cryptography.internal.5.0.8.nupkg.sha512",
